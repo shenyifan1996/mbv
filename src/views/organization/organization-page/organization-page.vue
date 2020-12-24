@@ -49,22 +49,6 @@ export default class organizationPage extends Vue{
     {id:"brand",validator:[]},
     {id:"type",validator:[]},
   ])
-  //新增表单
-  addQrgForm:Form=new Form([
-    {id:"name",validator:[new requiredValidator("不可为空")]},
-    {id:"code",validator:[
-        new rangeLengthValidator("10>=字符长度需要>=2",2,10),
-        new requiredValidator("满足长度的同时，也不能为空。")
-      ]},
-    {id:"organization",validator:[]},
-    {id:"status",validator:[
-        new requiredValidator("性别必须选")
-      ]},
-    {id:"brand",validator:[]},
-    {id:"type",validator:[]},
-  ])
-  //控制新增弹出框
-  addOragnization:boolean=false
 
   created(){
 

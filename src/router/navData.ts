@@ -10,7 +10,7 @@ export const navData: NavListItem[] = [
                     {
                         label: "员工统一视图", children: [
                             { label: "组织管理", path: "organization" },
-
+                            { label: "岗位管理", path: "position" },
                         ]
                     }
 

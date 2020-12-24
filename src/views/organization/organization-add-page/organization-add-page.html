@@ -81,8 +81,8 @@
             center>
         <el-tree :data="data1" :props="defaultProps" @node-click="handleNodeClick" class="tree"></el-tree>
         <span slot="footer" class="dialog-footer">
-    <el-button @click="cancelChoose">取 消</el-button>
-    <el-button type="primary" @click="confirmChoose">确 定</el-button>
+    <el-button @click="cancelChoose" size="medium">取 消</el-button>
+    <el-button type="primary" @click="confirmChoose" size="medium">确 定</el-button>
   </span>
     </el-dialog>
 </div>

@@ -1,0 +1,111 @@
+<!--岗位管理-->
+<div class="position">
+    <Cards class="position-search">
+        <template v-slot:header>
+            <span>岗位查询</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="positionForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            岗位代码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="positionForm.value.code"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            岗位名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="positionForm.value.name"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>状态</Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="positionForm.value.status" clearable>
+                                <el-option :value="'全部'" label="全部" selected/>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'无效'" label="无效"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell></Cell>
+                </Row>
+            </Form>
+            <Aside class="button-left">
+                <el-button type="primary" size="medium">查    询</el-button>
+                <el-button type="primary" size="medium">新    增</el-button>
+                <el-button type="primary" size="medium">删    除</el-button>
+            </Aside>
+            <!-- 列表页面 -->
+            <div class="positionList">
+                <!--                表格-->
+                <el-table
+                        stripe border
+                        ref="multipleTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="tableData"
+                        @selection-change="handleSelectionChange"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            fixed
+                            type="selection"
+                            width="55"
+                    >
+                    </el-table-column>
+                    <el-table-column
+
+                            label="岗位代码"
+                            width="120"
+                    >
+                        <template slot-scope="scope">
+                            <a href="">{{scope.row.plancode}}</a>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            prop="classname"
+                            label="岗位名称"
+
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="traintime"
+                            label="品牌"
+                            width="150"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="trainplace"
+                            label="业务类型"
+                            width="150"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="applicationtime"
+                            label="状态"
+                            width="120"
+                    >
+                    </el-table-column>
+                </el-table>
+                <!--                分页器-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="pageSizes"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        class="text-right"
+                >
+                </el-pagination>
+            </div>
+        </template>
+    </Cards>
+</div>

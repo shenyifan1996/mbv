@@ -16,6 +16,8 @@ const routes: IceRouterConfig[] = [
         path: "organization", component: () => import("../views/organization/organization-page/organization-page.vue"), pageName: "组织管理"
     },{
         path: "organizationAdd", component: () => import("../views/organization/organization-add-page/organization-add-page.vue"), pageName: "新增组织"
+    },{
+        path: "position", component: () => import("../views/position/position-page/position-page.vue"), pageName: "岗位管理"
     },
 
     /**
