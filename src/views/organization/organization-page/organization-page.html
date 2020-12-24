@@ -1,0 +1,89 @@
+<!--组织管理-->
+<div class="organization">
+    <!--    左侧组织树卡片-->
+    <Cards class="organization-tree">
+        <template v-slot:header>
+            <span>组织</span>
+        </template>
+        <template  v-slot:content>
+            <el-tree :data="data"
+                     :props="defaultProps"
+                     @node-click="handleNodeClick"
+                     :highlight-current= true
+            >
+            </el-tree>
+        </template >
+    </Cards>
+    <!--    右侧组织信息-->
+    <Cards class="organization-info">
+        <template v-slot:header>
+            <span>组织信息</span>
+        </template>
+        <template  v-slot:content>
+            <Form :form="orgForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            组织名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="orgForm.value.name"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            组织代码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="orgForm.value.code"/>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>组织</Label>
+                        <Value v-form-controller="'organization'" >
+                            <el-input v-model="orgForm.value.organization" :disabled="true"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>状态</Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="orgForm.value.status" clearable>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'无效'" label="无效"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>品牌</Label>
+                        <Value  class="oneline">
+                            <el-radio-group v-model="orgForm.value.brand">
+                                <el-radio :label="'QG'">QG</el-radio>
+                                <el-radio :label="'VW'">VW</el-radio>
+                                <el-radio :label="'SA'">SA</el-radio>
+                                <el-radio :label="'SK'">SK</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>类型</Label>
+                        <Value  class="oneline">
+                            <el-radio-group v-model="orgForm.value.type">
+                                <el-radio :label="'行政组织'">行政组织</el-radio>
+                                <el-radio :label="'业务组织'">业务组织</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="button-left">
+                <el-button type="primary" @click="submit">保存修改</el-button>
+                <el-button @click="$router.push('organizationAdd')">新增组织</el-button>
+            </Aside>
+        </template >
+    </Cards>
+</div>

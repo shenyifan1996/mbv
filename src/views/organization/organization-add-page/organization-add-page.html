@@ -1,0 +1,88 @@
+<div>
+    <!--    新增组织-->
+    <Cards class="organization-add">
+        <template v-slot:header>
+            <span>新增组织</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
+        </template>
+        <template  v-slot:content>
+            <Form :form="addQrgForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            组织名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="addQrgForm.value.name"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            组织代码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="addQrgForm.value.code"/>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>组织</Label>
+                        <Value v-form-controller="'organization'" class="chooseOrg">
+                            <el-input v-model="addQrgForm.value.organization" :disabled="true"/>
+                            <el-button type="primary" size="small" @click="openTree">选择组织</el-button>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>状态</Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="addQrgForm.value.status" clearable>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'无效'" label="无效"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>品牌</Label>
+                        <Value  class="oneline">
+                            <el-radio-group v-model="addQrgForm.value.brand">
+                                <el-radio :label="'QG'">QG</el-radio>
+                                <el-radio :label="'VW'">VW</el-radio>
+                                <el-radio :label="'SA'">SA</el-radio>
+                                <el-radio :label="'SK'">SK</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>类型</Label>
+                        <Value  class="oneline">
+                            <el-radio-group v-model="addQrgForm.value.type">
+                                <el-radio :label="'行政组织'">行政组织</el-radio>
+                                <el-radio :label="'业务组织'">业务组织</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="button-left">
+                <el-button type="primary" @click="submit">保存</el-button>
+                <el-button type="primary" @click="$router.back()">取消</el-button>
+            </Aside>
+        </template>
+    </Cards>
+<!--    弹窗-->
+    <el-dialog
+            title="提示"
+            :visible.sync="chooseOrg"
+            width="30%"
+            center>
+        <el-tree :data="data1" :props="defaultProps" @node-click="handleNodeClick" class="tree"></el-tree>
+        <span slot="footer" class="dialog-footer">
+    <el-button @click="cancelChoose">取 消</el-button>
+    <el-button type="primary" @click="confirmChoose">确 定</el-button>
+  </span>
+    </el-dialog>
+</div>

@@ -9,6 +9,8 @@ import MiniLoader from "./mini-loader-component/mini-loader-component.vue";
 import Form from "./form-component/form-component.vue";
 import {formControlDirective} from "./form-component/form-controller.directive";
 
+//新增
+import Cards from "./cards-component/cards-component.vue";
 
 Vue.component("Row",Row);
 Vue.component("Value",Content);
@@ -20,3 +22,5 @@ Vue.component("yo-mini-loader",MiniLoader);
 
 Vue.component("Form",Form);
 Vue.directive("form-controller",formControlDirective);
+//新增
+Vue.component("Cards",Cards);

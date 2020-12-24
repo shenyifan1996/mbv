@@ -5,13 +5,12 @@ import { NavListItem } from "../ice";
  */
 export const navData: NavListItem[] = [
     {
-        label: "系统信息", children: [
+        label: "鉴权管理", children: [
 
                     {
-                        label: "个人信息管理", children: [
-                            { label: "个人资料", path: "sample-test1" },
-                            { label: "常用功能设置", path: "sample-test2" },
-                            { label: "常用功能", path: "sample2-test1" }
+                        label: "员工统一视图", children: [
+                            { label: "组织管理", path: "organization" },
+
                         ]
                     }
 

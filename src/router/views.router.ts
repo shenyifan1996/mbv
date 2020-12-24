@@ -11,27 +11,34 @@ const routes: IceRouterConfig[] = [
     {
         path: "weclome", component: <any>weclomePage, pageName: ""
     },
+    //organization组织管理
+    {
+        path: "organization", component: () => import("../views/organization/organization-page/organization-page.vue"), pageName: "组织管理"
+    },{
+        path: "organizationAdd", component: () => import("../views/organization/organization-add-page/organization-add-page.vue"), pageName: "新增组织"
+    },
+
     /**
      * 下面列子可以删掉
      */
-    {
-        path: "sample-test1", component: () => import("../views/sample/sample-test1-page/sample-test1-page.vue"), pageName: "个人资料"
-    },
-    {
-        path: "sample-test2", component: () => import("../views/sample/sample-test2-page/sample-test2-page.vue"), pageName: "常用功能设置"
-    },
-    {
-        path: "sample2-test1", component: () => import("../views/sample2/sample2-test1-page/sample2-test1-page.vue"), pageName: "sample2 test1",
-        props: {
-            "subView": [
-                { path: "test2", subName: "子测试页2", component: () => import("../views/sample2/sample2-test1-page/test2-component/test2-component.vue") },
-                { path: "test1", subName: "子测试页1", component: () => import("../views/sample2/sample2-test1-page/test-component/test-component.vue") }
-            ]
-        }
-    },
-    {
-        path: "sample2-test2", component: () => import("../views/sample2/sample2-test2-page/sample2-test2-page.vue"), pageName: "sample2 test2"
-    }
+    // {
+    //     path: "sample-test1", component: () => import("../views/sample/sample-test1-page/sample-test1-page.vue"), pageName: "个人资料"
+    // },
+    // {
+    //     path: "sample-test2", component: () => import("../views/sample/sample-test2-page/sample-test2-page.vue"), pageName: "常用功能设置"
+    // },
+    // {
+    //     path: "sample2-test1", component: () => import("../views/sample2/sample2-test1-page/sample2-test1-page.vue"), pageName: "sample2 test1",
+    //     props: {
+    //         "subView": [
+    //             { path: "test2", subName: "子测试页2", component: () => import("../views/sample2/sample2-test1-page/test2-component/test2-component.vue") },
+    //             { path: "test1", subName: "子测试页1", component: () => import("../views/sample2/sample2-test1-page/test-component/test-component.vue") }
+    //         ]
+    //     }
+    // },
+    // {
+    //     path: "sample2-test2", component: () => import("../views/sample2/sample2-test2-page/sample2-test2-page.vue"), pageName: "sample2 test2"
+    // }
 ];
 
 export default routes;

@@ -1,0 +1,39 @@
+ .organization-add{
+    flex: 1;
+   width: 80%;
+   .el-input{
+     width: 75%;
+   }
+   ::v-deep.el-input.is-disabled .el-input__inner{
+     cursor:default!important;
+   }
+   .chooseOrg{
+     position: relative;
+     .el-button{
+       position: absolute;
+       right: -15px;
+     }
+   }
+   .el-radio{
+      margin-right: 20px;
+    }
+    .oneline{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .button-left{
+      margin-left: 100px;
+    }
+
+  }
+ .tree{
+   height: 200px;
+   overflow: hidden;
+   ::v-deep .el-tree-node.is-current>.el-tree-node__content{
+     background-color: #fff;
+     color: red;
+   }
+ }
+
+

@@ -30,25 +30,25 @@
     </div>
     <div class="core-page-body">
 <!--        抬头 信息-->
-        <header
-            v-if="activePageName"
-            class="core-page-title"
-        >
-            {{activePageName}}
+<!--        <header-->
+<!--            v-if="activePageName"-->
+<!--            class="core-page-title"-->
+<!--        >-->
+<!--            {{activePageName}}-->
 
-            <span class="core-innerRoute-title" v-for="(i,index) in innerQueue" :key="index">
-                <i class="za za-right"></i>
-                <span class="title">
-                    {{i.subName}}
-                </span>
-            </span>
-            <span class="rel">
+<!--            <span class="core-innerRoute-title" v-for="(i,index) in innerQueue" :key="index">-->
+<!--                <i class="za za-right"></i>-->
+<!--                <span class="title">-->
+<!--                    {{i.subName}}-->
+<!--                </span>-->
+<!--            </span>-->
+<!--            <span class="rel">-->
 
-            <button class="core-back-btn" v-if="innerQueue.length" @click="innerBack()" v-cm-ripple>
-                <i class="za za-return-1"></i>
-            </button>
-            </span>
-        </header>
+<!--            <button class="core-back-btn" v-if="innerQueue.length" @click="innerBack()" v-cm-ripple>-->
+<!--                <i class="za za-return-1"></i>-->
+<!--            </button>-->
+<!--            </span>-->
+<!--        </header>-->
 <!--        ice 路由-->
         <ice-router-view ></ice-router-view>
     </div>

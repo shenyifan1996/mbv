@@ -1,0 +1,31 @@
+.organization{
+  display: flex;
+  .organization-tree{
+    width: 25%;
+    margin-right: 10px;
+    ::v-deep .el-tree-node.is-current>.el-tree-node__content{
+      background-color: #fff;
+      color: red;
+    }
+  }
+  .organization-info{
+    flex: 1;
+    height: 300px;
+      ::v-deep.el-input.is-disabled .el-input__inner{
+        cursor:default!important;
+      }
+    .el-radio{
+      margin-right: 15px;
+    }
+    .oneline{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .button-left{
+      margin-left: 50px;
+    }
+
+  }
+}
+

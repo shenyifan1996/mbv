@@ -1,0 +1,15 @@
+.cards{
+  border: 1px solid #d1d1d1;
+  border-radius: 0px!important;
+  ::v-deep .el-card__header{
+    padding:5px 10px;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #d1d1d1;
+    .clearfix{
+      color:#003399 ;
+      font-weight: 700;
+      font-size: 16px;
+    }
+  }
+
+}
