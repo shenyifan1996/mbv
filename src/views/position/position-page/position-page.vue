@@ -6,7 +6,7 @@
 import Vue from "vue";
 import Component from "vue-class-component";
 import {Form, rangeLengthValidator, requiredValidator} from "@ztwx/form";
-import sampleData from "./train-check-page";
+import sampleData from "./position-page";
 
 @Component({})
 export default class positionPage extends Vue{
@@ -25,7 +25,7 @@ export default class positionPage extends Vue{
   pageSize:number = 5;
   pageSizes:any = [5, 10, 20, 30]
   total:number=sampleData.length;
-  multipleSelection:any=[] //选中的数组
+  positionSelection:any=[] //选中的数组
   //计算属性
   get tableData() {
     return sampleData.slice((this.currentPage-1)*this.pageSize,this.currentPage*this.pageSize)
@@ -45,7 +45,8 @@ export default class positionPage extends Vue{
   }
   //选中数组
   handleSelectionChange(val:any) {
-    this.multipleSelection = val;
+    this.positionSelection = val;
+    console.log(this.positionSelection)
   }
 
 }

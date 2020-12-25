@@ -1,7 +1,9 @@
 .organization{
   display: flex;
+  align-items:flex-start;
   .organization-tree{
     width: 25%;
+    min-height:500px ;
     margin-right: 10px;
     ::v-deep .el-tree-node.is-current>.el-tree-node__content{
       background-color: #fff;

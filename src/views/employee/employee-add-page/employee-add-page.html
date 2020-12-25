@@ -1,0 +1,300 @@
+<!--新增员工-->
+<div class="employee-add">
+    <Cards class="employee-add-card">
+        <template v-slot:header>
+            <span>新增员工</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
+        </template>
+        <template  v-slot:content>
+            <h3>基本信息</h3>
+            <div class="base-info">
+                <div class="pic">
+                    <el-upload
+                            ref="upLoad"
+                            class="avatar-uploader"
+                            action="https://jsonplaceholder.typicode.com/posts/"
+                            :show-file-list="false"
+                            :on-success="handleAvatarSuccess"
+                            :before-upload="beforeAvatarUpload">
+                        <img v-if="imageUrl" :src="imageUrl" class="avatar">
+                        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                    </el-upload>
+                    <p class="upLoadPic">个人照片上传</p>
+                </div>
+                <div class="info-form">
+                    <Form :form="addEmpForm">
+                        <Row>
+                            <Cell>
+                                <Label>
+                                    工号
+                                </Label>
+                                <Value v-form-controller="'employeeNumber'">
+                                    <el-input v-model="addEmpForm.value.employeeNumber"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    员工姓名
+                                </Label>
+                                <Value v-form-controller="'employeeName'">
+                                    <el-input v-model="addEmpForm.value.employeeName"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>性别</Label>
+                                <Value v-form-controller="'employeeSex'">
+                                    <el-select v-model="addEmpForm.value.employeeSex" clearable>
+                                        <el-option :value="'男'" label="男"/>
+                                        <el-option :value="'女'" label="女"/>
+                                    </el-select>
+                                </Value>
+                            </Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <Label>
+                                    出生日期
+                                </Label>
+                                <Value v-form-controller="'employeeBirth'">
+                                    <el-date-picker
+                                            class="employeeBirth"
+                                            v-model="addEmpForm.value.employeeBirth"
+                                            type="date"
+                                            placeholder="选择日期">
+                                    </el-date-picker>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    身份证
+                                </Label>
+                                <Value v-form-controller="'birthNumber'">
+                                    <el-input v-model="addEmpForm.value.birthNumber"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>文化程度</Label>
+                                <Value v-form-controller="'cultureLevel'">
+                                    <el-select v-model="addEmpForm.value.cultureLevel" clearable>
+                                        <el-option :value="'本科'" label="本科"/>
+                                        <el-option :value="'大专'" label="大专"/>
+                                        <el-option :value="'高中'" label="高中"/>
+                                    </el-select>
+                                </Value>
+                            </Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <Label>
+                                    民族
+                                </Label>
+                                <Value v-form-controller="'employeeNation'">
+                                    <el-input v-model="addEmpForm.value.employeeNation"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>政治面貌</Label>
+                                <Value v-form-controller="'politicsStatus'">
+                                    <el-select v-model="addEmpForm.value.politicsStatus" clearable>
+                                        <el-option :value="'群众'" label="群众"/>
+                                        <el-option :value="'党员'" label="党员"/>
+                                    </el-select>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    邮编
+                                </Label>
+                                <Value v-form-controller="'postcode'">
+                                    <el-input v-model="addEmpForm.value.postcode"/>
+                                </Value>
+                            </Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <Label>组织</Label>
+                                <Value v-form-controller="'organization'" class="chooseOrg">
+                                    <el-input v-model="addEmpForm.value.organization" :disabled="true"/>
+                                    <el-button type="primary" size="small" @click="openOrganizationTree">选择组织</el-button>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>数据状态</Label>
+                                <Value v-form-controller="'status'">
+                                    <el-select v-model="addEmpForm.value.status" clearable>
+                                        <el-option :value="'有效'" label="有效"/>
+                                        <el-option :value="'无效'" label="无效"/>
+                                    </el-select>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    技术职位
+                                </Label>
+                                <Value v-form-controller="'technicalPosition'">
+                                    <el-input v-model="addEmpForm.value.technicalPosition"/>
+                                </Value>
+                            </Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <Label>
+                                    联系电话
+                                </Label>
+                                <Value v-form-controller="'employeeTel'">
+                                    <el-input v-model="addEmpForm.value.employeeTel"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>手机</Label>
+                                <Value v-form-controller="'employeePhone'">
+                                    <el-input v-model="addEmpForm.value.employeePhone"/>
+
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    邮件
+                                </Label>
+                                <Value v-form-controller="'employeeEmail'">
+                                    <el-input v-model="addEmpForm.value.employeeEmail"/>
+                                </Value>
+                            </Cell>
+                        </Row>
+                        <Row>
+                            <Cell>
+                                <Label>
+                                    联系地址
+                                </Label>
+                                <Value v-form-controller="'employeeAddress'">
+                                    <el-input v-model="addEmpForm.value.employeeAddress"/>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>员工类型</Label>
+                                <Value v-form-controller="'employeeType'">
+                                    <el-select v-model="addEmpForm.value.employeeType" >
+                                        <el-option :value="'普通员工'" label="普通员工"/>
+                                        <el-option :value="'xxxx'" label="xxxx"/>
+                                    </el-select>
+                                </Value>
+                            </Cell>
+                            <Cell>
+                                <Label>
+                                    签章
+                                </Label>
+                                <Value v-form-controller="'employeeFile'">
+                                    <el-input type="file" v-model="addEmpForm.value.employeeFile" clearable/>
+                                </Value>
+                            </Cell>
+                        </Row>
+                    </Form>
+                </div>
+            </div>
+            <h3>岗位信息</h3>
+            <div class="employee-info">
+                <el-table
+                        stripe border
+                        ref="employeeAddTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="EmpInfoData"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            fixed
+                            type="selection"
+                            width="55"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="组织名称"
+                            prop="organizationName"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="岗位代码"
+                            prop="employeeCode"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="主岗/副岗"
+                            prop="postType"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="生效日期"
+                            prop="usefulData"
+                    >
+                    </el-table-column>
+                    <template slot="append">
+                        <div style="margin: 10px">
+                            <el-button type="primary" @click="openEmployeeTree">指定岗位</el-button>
+                            <el-button type="primary">移除岗位</el-button>
+                        </div>
+                    </template>
+                </el-table>
+            </div>
+<!--            底部两个按钮-->
+            <Aside class="text-center">
+                <el-button type="primary" size="medium" @click="submit">确定</el-button>
+                <el-button type="primary" size="medium" @click="$router.back()">取消</el-button>
+            </Aside>
+        </template >
+    </Cards>
+
+<!--    选择组织弹出框-->
+    <el-dialog
+            title="编辑组织"
+            :visible.sync="chooseOrg"
+            width="30%"
+            center>
+        <el-tree :data="data1" :props="defaultProps" @node-click="handleNodeClickOrg" class="tree"></el-tree>
+        <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="confirmChooseOrg" size="medium">确 定</el-button>
+    <el-button @click="cancelChooseOrg" size="medium">取 消</el-button>
+  </span>
+    </el-dialog>
+
+<!--    指定岗位弹出框-->
+    <el-dialog
+            title="编辑岗位"
+            :visible.sync="chooseEmp"
+            width="40%"
+            center>
+        <div class="EmpContent">
+            <el-tree :data="data2" :props="defaultProps" @node-click="handleNodeClickEmp" class="tree leftEmp"></el-tree>
+            <div class="rightEmp">
+                <Form :form="dialogAddEmpForm">
+                    <Row>
+                        <Cell>
+                            <Label>主岗/副岗</Label>
+                            <Value v-form-controller="'postType'">
+                                <el-select v-model="dialogAddEmpForm.value.postType" clearable>
+                                    <el-option :value="'主岗'" label="主岗"/>
+                                    <el-option :value="'副岗'" label="副岗"/>
+                                </el-select>
+                            </Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>生效日期</Label>
+                            <Value v-form-controller="'useData'">
+                                <el-date-picker
+                                        class="employeeBirth"
+                                        v-model="dialogAddEmpForm.value.useData"
+                                        type="date"
+                                        placeholder="选择日期">
+                                </el-date-picker>
+                            </Value>
+                        </Cell>
+                    </Row>
+                </Form>
+            </div>
+        </div>
+        <span slot="footer" class="dialog-footer">
+    <el-button type="primary" @click="confirmChooseEmp" size="medium">确 定</el-button>
+    <el-button @click="cancelChooseEmp" size="medium">取 消</el-button>
+  </span>
+    </el-dialog>
+</div>

@@ -39,7 +39,7 @@
             </Form>
             <Aside class="button-left">
                 <el-button type="primary" size="medium">查    询</el-button>
-                <el-button type="primary" size="medium">新    增</el-button>
+                <el-button type="primary" size="medium" @click="$router.push('positionAdd')">新    增</el-button>
                 <el-button type="primary" size="medium">删    除</el-button>
             </Aside>
             <!-- 列表页面 -->
@@ -47,7 +47,7 @@
                 <!--                表格-->
                 <el-table
                         stripe border
-                        ref="multipleTable"
+                        ref="positionTable"
                         :header-cell-style="{background:'#85a0cd'}"
                         :data="tableData"
                         @selection-change="handleSelectionChange"
@@ -60,34 +60,34 @@
                     >
                     </el-table-column>
                     <el-table-column
-
                             label="岗位代码"
                             width="120"
                     >
                         <template slot-scope="scope">
-                            <a href="">{{scope.row.plancode}}</a>
+                            <router-link :to="{path:'positionEdit',query: {info: scope.row}}">
+                                <span>{{scope.row.positionCode}}</span>
+                            </router-link>
                         </template>
                     </el-table-column>
                     <el-table-column
-                            prop="classname"
+                            prop="positionName"
                             label="岗位名称"
-
                     >
                     </el-table-column>
                     <el-table-column
-                            prop="traintime"
+                            prop="brand"
                             label="品牌"
                             width="150"
                     >
                     </el-table-column>
                     <el-table-column
-                            prop="trainplace"
+                            prop="businessType"
                             label="业务类型"
                             width="150"
                     >
                     </el-table-column>
                     <el-table-column
-                            prop="applicationtime"
+                            prop="status"
                             label="状态"
                             width="120"
                     >

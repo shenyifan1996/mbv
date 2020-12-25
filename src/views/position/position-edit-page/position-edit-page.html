@@ -1,0 +1,120 @@
+<!--    新增岗位-->
+<div class="position-edit-page">
+    <Cards class="position-edit">
+        <template v-slot:header>
+            <span>编辑岗位</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
+        </template>
+        <template  v-slot:content>
+            <!--            编辑岗位表单-->
+            <Form :form="editPositionForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            岗位代码
+                        </Label>
+                        <Value v-form-controller="'positionCode'">
+                            <el-input v-model="editPositionForm.value.positionCode"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            岗位名称
+                        </Label>
+                        <Value v-form-controller="'positionName'">
+                            <el-input v-model="editPositionForm.value.positionName"/>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>品牌</Label>
+                        <Value v-form-controller="'brand'">
+                            <el-select v-model="editPositionForm.value.brand" clearable>
+                                <el-option :value="'双品牌'" label="双品牌"/>
+                                <el-option :value="'xxx'" label="xxx"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>业务类型</Label>
+                        <Value v-form-controller="'businessType'">
+                            <el-select v-model="editPositionForm.value.businessType" clearable>
+                                <el-option :value="'双业务'" label="双业务"/>
+                                <el-option :value="'销售'" label="销售"/>
+                                <el-option :value="'售后'" label="售后"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>状态</Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="editPositionForm.value.status" clearable>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'无效'" label="无效"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <!--            组织信息表格表格-->
+            <div class="positionList">
+                <!--                表格-->
+                <span>组织信息</span>
+                <el-table
+                        stripe border
+                        ref="positionAddTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="OrgInfoData"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            fixed
+                            type="selection"
+                            width="55"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="组织代码"
+                            prop="organizationCode"
+
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="组织名称"
+                            prop="organizationName"
+                    >
+                    </el-table-column>
+                    <template slot="append">
+                        <div style="margin: 10px">
+                            <el-button type="primary" @click="openTree">指定组织</el-button>
+                            <el-button type="primary">移除组织</el-button>
+                        </div>
+                    </template>
+                </el-table>
+            </div>
+            <!--            底部两个按钮-->
+            <Aside class="text-center">
+                <el-button type="primary" size="medium" >确定</el-button>
+                <el-button type="primary" size="medium" @click="$router.back()">取消</el-button>
+            </Aside>
+        </template>
+    </Cards>
+
+    <!--    弹窗-->
+    <el-dialog
+            title="选择组织"
+            :visible.sync="chooseOrg"
+            width="30%"
+            center>
+        <el-tree :data="data1" :props="defaultProps" @node-click="handleNodeClick" class="tree"></el-tree>
+        <span slot="footer" class="dialog-footer">
+            <el-button @click="cancelChoose" size="medium">取 消</el-button>
+            <el-button type="primary" @click="confirmChoose" size="medium">确 定</el-button>
+        </span>
+    </el-dialog>
+</div>

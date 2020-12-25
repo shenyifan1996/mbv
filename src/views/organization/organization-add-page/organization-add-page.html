@@ -68,14 +68,14 @@
                 </Row>
             </Form>
             <Aside class="button-left">
-                <el-button type="primary" @click="submit">保存</el-button>
-                <el-button type="primary" @click="$router.back()">取消</el-button>
+                <el-button type="primary" size="medium" @click="submit">保存</el-button>
+                <el-button type="primary" size="medium" @click="$router.back()">取消</el-button>
             </Aside>
         </template>
     </Cards>
 <!--    弹窗-->
     <el-dialog
-            title="提示"
+            title="选择组织"
             :visible.sync="chooseOrg"
             width="30%"
             center>

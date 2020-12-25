@@ -1,0 +1,187 @@
+<div class="employee">
+    <!--    左侧组织树卡片-->
+    <Cards class="organization-tree">
+        <template v-slot:header>
+            <span>组织</span>
+        </template>
+        <template  v-slot:content>
+            <el-tree :data="data"
+                     :props="defaultProps"
+                     @node-click="handleNodeClick"
+                     :highlight-current= true
+            >
+            </el-tree>
+        </template >
+    </Cards>
+    <!--    右侧用户查看卡片-->
+    <Cards class="employee-info">
+        <template v-slot:header>
+            <span>用户查看</span>
+        </template>
+        <template  v-slot:content>
+            <Form :form="empForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            员工姓名
+                        </Label>
+                        <Value v-form-controller="'employeeName'">
+                            <el-input v-model="empForm.value.employeeName"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            工号
+                        </Label>
+                        <Value v-form-controller="'employeeNumber'">
+                            <el-input v-model="empForm.value.employeeNumber"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>性别</Label>
+                        <Value v-form-controller="'employeeSex'">
+                            <el-select v-model="empForm.value.employeeSex" clearable>
+                                <el-option :value="'男'" label="男"/>
+                                <el-option :value="'女'" label="女"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>手机</Label>
+                        <Value v-form-controller="'employeePhone'" >
+                            <el-input v-model="empForm.value.employeePhone" />
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>邮件</Label>
+                        <Value v-form-controller="'employeeEmail'" >
+                            <el-input v-model="empForm.value.employeeEmail" />
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>联系电话</Label>
+                        <Value v-form-controller="'employeeTel'" >
+                            <el-input v-model="empForm.value.employeeTel" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>岗位</Label>
+                        <Value v-form-controller="'employeePost'"  >
+                            <el-select v-model="empForm.value.employeePost" clearable>
+                                <el-option :value="'213213'" label="213213"/>
+                                <el-option :value="'123213'" label="123213"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>数据状态</Label>
+                        <Value  v-form-controller="'status'" >
+                            <el-select v-model="empForm.value.status" clearable>
+                                <el-option :value="'全部'" label="全部"/>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'无效'" label="无效"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>按组织查询</Label>
+                        <Value v-form-controller="'isSearch'">
+                            <el-checkbox v-model="empForm.value.isSearch"></el-checkbox>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="button-left">
+                <el-button type="primary" size="medium">查  询</el-button>
+                <el-button type="primary" size="medium" @click="$router.push('employeeAdd')">新  增</el-button>
+            </Aside>
+            <!-- 列表页面 -->
+            <div class="employeeList">
+                <!--                表格-->
+                <el-table
+                        stripe border
+                        ref="employeeTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="employeeData"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            fixed
+                            type="selection"
+                            width="50"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="工号"
+                            prop="employeeNumber"
+                            width="70"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="员工姓名"
+                            prop="employeeName"
+                            width="100"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="employeeSex"
+                            label="性别"
+                            width="55"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="employeeTel"
+                            label="联系电话"
+                            width="90"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="employeePhone"
+                            label="手机"
+                            width="90"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="employeeEmail"
+                            label="邮件"
+
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop=""
+                            label="组织"
+                            width="120"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="操作"
+                            width="70"
+                    >
+                        <template slot-scope="scope">
+                            <el-button type="text" size="small">修改</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <!--                分页器-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="pageSizes"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        class="text-right"
+                >
+                </el-pagination>
+            </div>
+        </template >
+    </Cards>
+
+
+</div>

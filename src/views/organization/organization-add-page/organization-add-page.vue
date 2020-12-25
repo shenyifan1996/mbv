@@ -81,7 +81,7 @@ export default class organizationAddPage extends Vue{
     this.data1=this.data
   }
   //点击选择
-  handleNodeClick(data) {
+  handleNodeClick(data:any) {
     this.orgName=data.label
   }
   //取消选择

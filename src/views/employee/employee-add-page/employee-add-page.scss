@@ -1,0 +1,77 @@
+.employee-add{
+  //基础信息
+  .base-info{
+    display: flex;
+    //图片上传
+    .pic{
+      width: 20%;
+      ::v-deep .el-upload {
+        border: 1px dashed #d9d9d9!important;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      ::v-deep .el-upload:hover {
+         border-color: #409EFF;
+      }
+      .avatar-uploader-icon {
+        font-size: 28px;
+        color: #8c939d;
+        width: 128px;
+        height: 168px;
+        line-height: 178px;
+        text-align: center;
+      }
+      .avatar {
+        width: 128px;
+        height: 168px;
+        display: block;
+      }
+      .upLoadPic{
+        color: red;
+        margin-left: 20px;
+      }
+    }
+    //基础信息表单
+    .info-form{
+      ::v-deep .yo-cell-label{
+        min-width: 100px!important;
+      }
+      .employeeBirth{
+        max-width: 183.69px;
+      }
+    }
+  }
+  //岗位信息
+  .employee-info{
+    ::v-deep.el-table th>.cell{
+      color: #FFFFFF;
+    }
+    ::v-deep .el-table__empty-block{
+      display: none;
+    }
+  }
+  //两个弹出框共有的
+  .tree{
+    height: 200px;
+    overflow: hidden;
+    ::v-deep .el-tree-node.is-current>.el-tree-node__content{
+      background-color: #fff;
+      color: red;
+    }
+  }
+  .EmpContent{
+    display: flex;
+    .leftEmp{
+      width: 40%;
+    }
+    .rightEmp{
+      width: 60%;
+      .employeeBirth{
+        max-width: 164px;
+      }
+    }
+  }
+}
+
+
