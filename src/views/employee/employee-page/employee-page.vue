@@ -75,6 +75,16 @@ export default class employeePage extends Vue{
     this.positionSelection = val;
     console.log(this.positionSelection)
   }
+  //跳转到编辑员工的界面
+  changeInfo(row:any){
+    // console.log(row)
+    this.$router.push({
+      path: 'employeeEdit',
+      query: {
+        id: row.employeeNumber
+      }
+    })
+  }
 }
 </script>
 

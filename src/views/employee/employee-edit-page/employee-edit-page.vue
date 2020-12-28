@@ -1,5 +1,5 @@
 
-<template src="./employee-add-page.html">
+<template src="./employee-edit-page.html">
 </template>
 
 <script lang="ts">
@@ -8,10 +8,10 @@ import Component from "vue-class-component";
 import {Form, rangeLengthValidator, requiredValidator} from "@ztwx/form";
 
 @Component({})
-export default class employeeAddPage extends Vue{
+export default class employeeEditPage extends Vue{
   imageUrl:string = ''
   //新增岗位表单
-  addEmpForm:Form=new Form([
+  editEmpForm:Form=new Form([
     {id:"employeeNumber",validator:[]},
     {id:"employeeName",validator:[]},
     {id:"employeeSex",validator:[]},
@@ -32,7 +32,7 @@ export default class employeeAddPage extends Vue{
     {id:"employeeFile",validator:[]},
   ])
   //弹出框岗位表单
-  dialogAddEmpForm:Form=new Form([
+  dialogEditEmpForm:Form=new Form([
     {id:"allJob",validator:[]},
     {id:"postType",validator:[]},
     {id:"useData",validator:[]},
@@ -70,9 +70,12 @@ export default class employeeAddPage extends Vue{
   //中转组织名
   orgName:string=''
 
+  created(){
+    this.editEmpForm.value.employeeNumber = this.$route.query.id
+  }
   //岗位信息表格数据
-  EmpInfoData:any = []
-
+  EditEmpInfoData:any = []
+  //图片相关
   handleAvatarSuccess(res:any, file:any) {
     console.log(1)
     this.imageUrl = URL.createObjectURL(file.raw);
@@ -94,9 +97,9 @@ export default class employeeAddPage extends Vue{
 
   //确认修改做的事
   submit(){
-    const isPass=this.addEmpForm.checkValidators();
+    const isPass=this.editEmpForm.checkValidators();
     if(!isPass)return;
-    const result=this.addEmpForm.value;
+    const result=this.editEmpForm.value;
     alert(`
 通过校验,表单值为：
     ${JSON.stringify(result,null,4)};
@@ -119,7 +122,7 @@ export default class employeeAddPage extends Vue{
   }
   //确认选择（组织）
   confirmChooseOrg(){
-    this.addEmpForm.value.organization=this.orgName
+    this.editEmpForm.value.organization=this.orgName
     this.chooseOrg = false
     this.orgName=''
     this.data1=[]
@@ -145,5 +148,5 @@ export default class employeeAddPage extends Vue{
 }
 </script>
 
-<style scoped src="./employee-add-page.scss" lang="scss">
+<style scoped src="./employee-edit-page.scss" lang="scss">
 </style>

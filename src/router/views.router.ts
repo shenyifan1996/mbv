@@ -30,6 +30,8 @@ const routes: IceRouterConfig[] = [
         path: "employee", component: () => import("../views/employee/employee-page/employee-page.vue"), pageName: "员工管理"
     },{
         path: "employeeAdd", component: () => import("../views/employee/employee-add-page/employee-add-page.vue"), pageName: "员工新增"
+    },{
+        path: "employeeEdit", component: () => import("../views/employee/employee-edit-page/employee-edit-page.vue"), pageName: "员工编辑"
     },
 
 ];

@@ -1,8 +1,8 @@
-<!--新增员工-->
-<div class="employee-add">
-    <Cards class="employee-add-card">
+<!--编辑员工-->
+<div class="employee-edit">
+    <Cards class="employee-edit-card">
         <template v-slot:header>
-            <span>新增员工</span>
+            <span>编辑员工</span>
             <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
         </template>
         <template  v-slot:content>
@@ -19,17 +19,17 @@
                         <img v-if="imageUrl" :src="imageUrl" class="avatar" alt>
                         <i v-else class="el-icon-plus avatar-uploader-icon"></i>
                     </el-upload>
-                    <p class="upLoadPic">个人照片上传</p>
+                    <p class="upLoadPic">更换个人照片</p>
                 </div>
                 <div class="info-form">
-                    <Form :form="addEmpForm">
+                    <Form :form="editEmpForm">
                         <Row>
                             <Cell>
                                 <Label>
                                     工号
                                 </Label>
                                 <Value v-form-controller="'employeeNumber'">
-                                    <el-input v-model="addEmpForm.value.employeeNumber"/>
+                                    <el-input v-model="editEmpForm.value.employeeNumber"/>
                                 </Value>
                             </Cell>
                             <Cell>
@@ -37,13 +37,13 @@
                                     员工姓名
                                 </Label>
                                 <Value v-form-controller="'employeeName'">
-                                    <el-input v-model="addEmpForm.value.employeeName"/>
+                                    <el-input v-model="editEmpForm.value.employeeName"/>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>性别</Label>
                                 <Value v-form-controller="'employeeSex'">
-                                    <el-select v-model="addEmpForm.value.employeeSex" clearable>
+                                    <el-select v-model="editEmpForm.value.employeeSex" clearable>
                                         <el-option :value="'男'" label="男"/>
                                         <el-option :value="'女'" label="女"/>
                                     </el-select>
@@ -58,7 +58,7 @@
                                 <Value v-form-controller="'employeeBirth'">
                                     <el-date-picker
                                             class="employeeBirth"
-                                            v-model="addEmpForm.value.employeeBirth"
+                                            v-model="editEmpForm.value.employeeBirth"
                                             type="date"
                                             placeholder="选择日期">
                                     </el-date-picker>
@@ -69,13 +69,13 @@
                                     身份证
                                 </Label>
                                 <Value v-form-controller="'birthNumber'">
-                                    <el-input v-model="addEmpForm.value.birthNumber"/>
+                                    <el-input v-model="editEmpForm.value.birthNumber"/>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>文化程度</Label>
                                 <Value v-form-controller="'cultureLevel'">
-                                    <el-select v-model="addEmpForm.value.cultureLevel" clearable>
+                                    <el-select v-model="editEmpForm.value.cultureLevel" clearable>
                                         <el-option :value="'本科'" label="本科"/>
                                         <el-option :value="'大专'" label="大专"/>
                                         <el-option :value="'高中'" label="高中"/>
@@ -89,13 +89,13 @@
                                     民族
                                 </Label>
                                 <Value v-form-controller="'employeeNation'">
-                                    <el-input v-model="addEmpForm.value.employeeNation"/>
+                                    <el-input v-model="editEmpForm.value.employeeNation"/>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>政治面貌</Label>
                                 <Value v-form-controller="'politicsStatus'">
-                                    <el-select v-model="addEmpForm.value.politicsStatus" clearable>
+                                    <el-select v-model="editEmpForm.value.politicsStatus" clearable>
                                         <el-option :value="'群众'" label="群众"/>
                                         <el-option :value="'党员'" label="党员"/>
                                     </el-select>
@@ -106,7 +106,7 @@
                                     邮编
                                 </Label>
                                 <Value v-form-controller="'postcode'">
-                                    <el-input v-model="addEmpForm.value.postcode"/>
+                                    <el-input v-model="editEmpForm.value.postcode"/>
                                 </Value>
                             </Cell>
                         </Row>
@@ -114,14 +114,14 @@
                             <Cell>
                                 <Label>组织</Label>
                                 <Value v-form-controller="'organization'" class="chooseOrg">
-                                    <el-input v-model="addEmpForm.value.organization" :disabled="true"/>
+                                    <el-input v-model="editEmpForm.value.organization" :disabled="true"/>
                                     <el-button type="primary" size="small" @click="openOrganizationTree">选择组织</el-button>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>数据状态</Label>
                                 <Value v-form-controller="'status'">
-                                    <el-select v-model="addEmpForm.value.status" clearable>
+                                    <el-select v-model="editEmpForm.value.status" clearable>
                                         <el-option :value="'有效'" label="有效"/>
                                         <el-option :value="'无效'" label="无效"/>
                                     </el-select>
@@ -132,7 +132,7 @@
                                     技术职位
                                 </Label>
                                 <Value v-form-controller="'technicalPosition'">
-                                    <el-input v-model="addEmpForm.value.technicalPosition"/>
+                                    <el-input v-model="editEmpForm.value.technicalPosition"/>
                                 </Value>
                             </Cell>
                         </Row>
@@ -142,13 +142,13 @@
                                     联系电话
                                 </Label>
                                 <Value v-form-controller="'employeeTel'">
-                                    <el-input v-model="addEmpForm.value.employeeTel"/>
+                                    <el-input v-model="editEmpForm.value.employeeTel"/>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>手机</Label>
                                 <Value v-form-controller="'employeePhone'">
-                                    <el-input v-model="addEmpForm.value.employeePhone"/>
+                                    <el-input v-model="editEmpForm.value.employeePhone"/>
 
                                 </Value>
                             </Cell>
@@ -157,7 +157,7 @@
                                     邮件
                                 </Label>
                                 <Value v-form-controller="'employeeEmail'">
-                                    <el-input v-model="addEmpForm.value.employeeEmail"/>
+                                    <el-input v-model="editEmpForm.value.employeeEmail"/>
                                 </Value>
                             </Cell>
                         </Row>
@@ -167,13 +167,13 @@
                                     联系地址
                                 </Label>
                                 <Value v-form-controller="'employeeAddress'">
-                                    <el-input v-model="addEmpForm.value.employeeAddress"/>
+                                    <el-input v-model=editEmpForm.value.employeeAddress"/>
                                 </Value>
                             </Cell>
                             <Cell>
                                 <Label>员工类型</Label>
                                 <Value v-form-controller="'employeeType'">
-                                    <el-select v-model="addEmpForm.value.employeeType" >
+                                    <el-select v-model="editEmpForm.value.employeeType" >
                                         <el-option :value="'普通员工'" label="普通员工"/>
                                         <el-option :value="'xxxx'" label="xxxx"/>
                                     </el-select>
@@ -184,7 +184,7 @@
                                     签章
                                 </Label>
                                 <Value v-form-controller="'employeeFile'">
-                                    <el-input type="file" v-model="addEmpForm.value.employeeFile" clearable/>
+                                    <el-input type="file" v-model="editEmpForm.value.employeeFile" clearable/>
                                 </Value>
                             </Cell>
                         </Row>
@@ -197,7 +197,7 @@
                         stripe border
                         ref="employeeAddTable"
                         :header-cell-style="{background:'#85a0cd'}"
-                        :data="EmpInfoData"
+                        :data="EditEmpInfoData"
                         style="width: 100%"
                 >
                     <el-table-column
@@ -264,12 +264,12 @@
         <div class="EmpContent">
             <el-tree :data="data2" :props="defaultProps" @node-click="handleNodeClickEmp" class="tree leftEmp"></el-tree>
             <div class="rightEmp">
-                <Form :form="dialogAddEmpForm">
+                <Form :form="dialogEditEmpForm">
                     <Row>
                         <Cell>
                             <Label>岗位</Label>
                             <Value v-form-controller="'allJob'">
-                                <el-select v-model="dialogAddEmpForm.value.allJob" clearable>
+                                <el-select v-model="dialogEditEmpForm.value.allJob" clearable>
                                     <el-option :value="'111'" label="111"/>
                                     <el-option :value="'2222'" label="2222"/>
                                 </el-select>
@@ -280,7 +280,7 @@
                         <Cell>
                             <Label>主岗/副岗</Label>
                             <Value v-form-controller="'postType'">
-                                <el-select v-model="dialogAddEmpForm.value.postType" clearable>
+                                <el-select v-model="dialogEditEmpForm.value.postType" clearable>
                                     <el-option :value="'主岗'" label="主岗"/>
                                     <el-option :value="'副岗'" label="副岗"/>
                                 </el-select>
@@ -293,7 +293,7 @@
                             <Value v-form-controller="'useData'">
                                 <el-date-picker
                                         class="employeeBirth"
-                                        v-model="dialogAddEmpForm.value.useData"
+                                        v-model="dialogEditEmpForm.value.useData"
                                         type="date"
                                         placeholder="选择日期">
                                 </el-date-picker>
