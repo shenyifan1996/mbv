@@ -1,0 +1,108 @@
+<div class="channelRegistration-edit-page">
+    <Cards class="channelRegistration-edit">
+        <template v-slot:header>
+            <span>频道编辑</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="channelEditForm" class="channelEditForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            频道编码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="channelEditForm.value.code" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            频道名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="channelEditForm.value.name" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            描述
+                        </Label>
+                        <Value v-form-controller="'desc'">
+                            <el-input type="textarea" v-model="channelEditForm.value.desc"></el-input>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            目标URL
+                        </Label>
+                        <Value v-form-controller="'targetURL'">
+                            <el-input v-model="channelEditForm.value.targetURL" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            排序
+                        </Label>
+                        <Value v-form-controller="'sort'">
+                            <el-input v-model="channelEditForm.value.sort" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            展示方式
+                        </Label>
+                        <Value v-form-controller="'showType'">
+                            <el-select v-model="channelEditForm.value.showType" clearable>
+                                <el-option :value="'弹出'" label="弹出"/>
+                                <el-option :value="'xxx'" label="xxx"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            所属品牌
+                        </Label>
+                        <Value v-form-controller="'brand'">
+                            <el-radio-group v-model="channelEditForm.value.brand">
+                                <el-radio :label="'双品牌'">双品牌</el-radio>
+                                <el-radio :label="'大众'">大众</el-radio>
+                                <el-radio :label="'斯柯达'">斯柯达</el-radio>
+                                <el-radio :label="'奥迪'">奥迪</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            状态
+                        </Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="channelEditForm.value.status" clearable>
+                                <el-option :value="'双品牌'" label="双品牌"/>
+                                <el-option :value="'xxx'" label="xxx"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="text-center">
+                <el-button type="primary" size="mini" @click="submit">保存</el-button>
+                <el-button type="primary" size="mini" @click="$router.back()">取消</el-button>
+            </Aside>
+        </template>
+    </Cards>
+</div>

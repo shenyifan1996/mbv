@@ -1,0 +1,15 @@
+.systemSetting-menu-page{
+  .systemSetting-menu{
+    margin-bottom: 20px;
+  }
+  .systemSetting-menu-list{
+    .systemMenuList{
+      .button-top{
+        padding-top: 0;
+      }
+      ::v-deep.el-table th>.cell{
+        color: #FFFFFF;
+      }
+    }
+  }
+}

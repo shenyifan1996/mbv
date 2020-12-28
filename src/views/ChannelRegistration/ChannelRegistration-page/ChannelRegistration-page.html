@@ -1,0 +1,112 @@
+<div class="channelRegistration-page">
+    <Cards class="channelRegistration">
+        <template v-slot:header>
+            <span>频道注册</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="channelForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            频道名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="channelForm.value.name" />
+                        </Value>
+                    </Cell>
+                    <Cell></Cell>
+                    <Cell></Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            状态
+                        </Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="channelForm.value.status" clearable>
+                                <el-option :value="'双品牌'" label="双品牌"/>
+                                <el-option :value="'xxx'" label="xxx"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell></Cell>
+                    <Cell></Cell>
+                </Row>
+            </Form>
+            <Aside class="left-button">
+                <el-button type="primary" size="mini">查询</el-button>
+            </Aside>
+        </template>
+    </Cards>
+    <Cards class="channelRegistration-list">
+        <template v-slot:header>
+            <span>频道列表</span>
+        </template>
+        <template v-slot:content>
+            <Aside class="button-top">
+                <el-button type="primary" size="mini" @click="$router.push('ChannelRegistrationAdd')">新建</el-button>
+            </Aside>
+            <div class="channelList">
+                <!--                表格-->
+                <el-table
+                        stripe border
+                        ref="channelTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="channelData"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            label="频道编码"
+                            prop="channelCode"
+                            width="120"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="频道名称"
+                            prop="channelName"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="status"
+                            label="状态"
+                            width="120"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="brand"
+                            label="所属品牌"
+                            width="150"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="sort"
+                            label="排序"
+                            width="120"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="操作"
+                            width="100"
+                    >
+                        <template slot-scope="scope">
+                            <el-button type="text" size="small" @click="InfoEdit(scope.row)">编辑</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <!--                分页器-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="pageSizes"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        class="text-right"
+                >
+                </el-pagination>
+            </div>
+        </template>
+    </Cards>
+</div>

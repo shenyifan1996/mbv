@@ -1,0 +1,13 @@
+.systemSetting-page{
+  .systemSetting{
+    margin-bottom: 20px;
+    .left-button{
+      margin-left: 110px;
+    }
+  }
+  .systemSetting-list{
+    ::v-deep.el-table th>.cell{
+      color: #FFFFFF;
+    }
+  }
+}

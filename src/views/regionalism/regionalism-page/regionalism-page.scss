@@ -1,0 +1,24 @@
+.regionalism-page{
+  display: flex;
+  align-items:flex-start;
+  .regionalism-tree{
+    width: 25%;
+    min-height:500px ;
+    margin-right: 10px;
+    ::v-deep .el-tree-node.is-current>.el-tree-node__content{
+      background-color: #fff;
+      color: red;
+    }
+  }
+  .regionalism{
+    flex: 1;
+    ::v-deep .el-input__inner{
+      border: 0;
+    }
+    .el-input.is-disabled ::v-deep.el-input__inner{
+      background-color: transparent;
+      cursor: default;
+      //color: rgba(5, 42, 53, 0.85);
+    }
+  }
+}

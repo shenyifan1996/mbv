@@ -1,0 +1,71 @@
+<!--行政区划-->
+<div class="regionalism-page">
+    <Cards class="regionalism-tree">
+        <template v-slot:header>
+            <span>组织</span>
+        </template>
+        <template v-slot:content>
+            <el-tree :data="data"
+                     :props="defaultProps"
+                     @node-click="handleNodeClick"
+                     :highlight-current= true
+            >
+            </el-tree>
+        </template>
+    </Cards>
+    <Cards class="regionalism">
+        <template v-slot:header>
+            <span>行政区域</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="regForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            行政区划名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="regForm.value.name" :disabled="true"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>
+                            行政区拼音
+                        </Label>
+                        <Value v-form-controller="'spell'">
+                            <el-input v-model="regForm.value.spell" :disabled="true"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>
+                            行政区代码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="regForm.value.code" :disabled="true"/>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            行政区划简码
+                        </Label>
+                        <Value v-form-controller="'simpleCode'">
+                            <el-input v-model="regForm.value.simpleCode" :disabled="true"/>
+                        </Value>
+                    </Cell>
+
+                    <Cell>
+                        <Label>
+                            行政区划级别
+                        </Label>
+                        <Value v-form-controller="'level'">
+                            <el-input v-model="regForm.value.level" :disabled="true"/>
+                        </Value>
+                    </Cell>
+                    <Cell></Cell>
+                </Row>
+            </Form>
+        </template>
+    </Cards>
+</div>

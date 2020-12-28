@@ -1,0 +1,16 @@
+.channelRegistration-page{
+  .channelRegistration{
+    margin-bottom: 20px;
+    .left-button{
+      margin-left: 110px;
+    }
+  }
+  .channelRegistration-list{
+    .button-top{
+      padding-top: 0;
+    }
+    ::v-deep.el-table th>.cell{
+      color: #FFFFFF;
+    }
+  }
+}

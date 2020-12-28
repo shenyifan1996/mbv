@@ -33,6 +33,34 @@ const routes: IceRouterConfig[] = [
     },{
         path: "employeeEdit", component: () => import("../views/employee/employee-edit-page/employee-edit-page.vue"), pageName: "员工编辑"
     },
+    //regionalism行政区划
+    {
+        path: "regionalism", component: () => import("../views/regionalism/regionalism-page/regionalism-page.vue"), pageName: "行政区划"
+    },
+    //ChannelRegistration频道注册
+    {
+        path: "ChannelRegistration", component: () => import("../views/ChannelRegistration/ChannelRegistration-page/ChannelRegistration-page.vue"), pageName: "频道注册"
+    },{
+        path: "ChannelRegistrationAdd", component: () => import("../views/ChannelRegistration/ChannelRegistration-add-page/ChannelRegistration-add-page.vue"), pageName: "频道新建"
+    },{
+        path: "ChannelRegistrationEdit", component: () => import("../views/ChannelRegistration/ChannelRegistration-edit-page/ChannelRegistration-edit-page.vue"), pageName: "频道编辑"
+    },
+    //systemSetting系统配置
+    {
+        path: "systemSetting", component: () => import("../views/systemSetting/systemSetting-page/systemSetting-page.vue"), pageName: "系统配置"
+    },{
+        path: "systemSettingMenu", component: () => import("../views/systemSetting/systemSetting-menu-page/systemSetting-menu-page.vue"), pageName: "菜单设置"
+    },{
+        path: "systemSettingMenuAdd", component: () => import("../views/systemSetting/systemSetting-menu-add-page/systemSetting-menu-add-page.vue"), pageName: "菜单新增"
+    },{
+        path: "systemSettingMenuEdit", component: () => import("../views/systemSetting/systemSetting-menu-edit-page/systemSetting-menu-edit-page.vue"), pageName: "菜单编辑"
+    },{
+        path: "systemSettingMenuBtn", component: () => import("../views/systemSetting/systemSetting-menu-btn-page/systemSetting-menu-btn-page.vue"), pageName: "按钮管理"
+    },{
+        path: "systemSettingMenuBtnAdd", component: () => import("../views/systemSetting/systemSetting-menu-btn-add-page/systemSetting-menu-btn-add-page.vue"), pageName: "新增按钮"
+    },{
+        path: "systemSettingMenuBtnEdit", component: () => import("../views/systemSetting/systemSetting-menu-btn-edit-page/systemSetting-menu-btn-edit-page.vue"), pageName: "编辑按钮"
+    },
 
 ];
 

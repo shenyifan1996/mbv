@@ -167,7 +167,7 @@
                                     联系地址
                                 </Label>
                                 <Value v-form-controller="'employeeAddress'">
-                                    <el-input v-model=editEmpForm.value.employeeAddress"/>
+                                    <el-input v-model="editEmpForm.value.employeeAddress"/>
                                 </Value>
                             </Cell>
                             <Cell>
@@ -175,7 +175,7 @@
                                 <Value v-form-controller="'employeeType'">
                                     <el-select v-model="editEmpForm.value.employeeType" >
                                         <el-option :value="'普通员工'" label="普通员工"/>
-                                        <el-option :value="'xxxx'" label="xxxx"/>
+                                        <el-option :value="'xxxx1'" label="xxxx1"/>
                                     </el-select>
                                 </Value>
                             </Cell>

@@ -1,0 +1,12 @@
+.systemSetting-menu-btn-page{
+  .systemSetting-menu-btn{
+    .left-button{
+      margin-left: 100px;
+    }
+    .menuBtnList{
+      ::v-deep.el-table th>.cell{
+        color: #FFFFFF;
+      }
+    }
+  }
+}
