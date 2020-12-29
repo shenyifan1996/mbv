@@ -1,0 +1,76 @@
+<div class="roleManagement-role-page">
+    <Cards class="roleManagement-role">
+        <template v-slot:header>
+            <span>人员角色授权界面</span>
+        </template>
+        <template v-slot:content>
+            <!--                表单-->
+            <Form :form="roleManRoleForm" class="roleManRoleForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            角色代码
+                        </Label>
+                        <Value v-form-controller="'roleCode'">
+                            <el-input v-model="roleManRoleForm.value.roleCode"/>
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>
+                            角色名称
+                        </Label>
+                        <Value v-form-controller="'roleName'">
+                            <el-input v-model="roleManRoleForm.value.roleName" />
+                        </Value>
+                    </Cell>
+                    <Cell></Cell>
+                </Row>
+            </Form>
+            <Aside class="btn-left">
+                <el-button type="primary" size="mini" @click="$router.push('roleManagementRoleAdd')">新增</el-button>
+                <el-button type="primary" size="mini">删除</el-button>
+            </Aside>
+            <!-- 列表页面 -->
+            <div class="roleManagementRoleList">
+                <!--                表格-->
+                <el-table
+                        stripe border
+                        ref="roleManagementRoleTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="roleManagementRoleData"
+                        @selection-change="handleSelectionChange"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            fixed
+                            type="selection"
+                            width="55"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="number"
+                            label="员工工号"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="name"
+                            label="员工姓名"
+                    >
+                    </el-table-column>
+                </el-table>
+                <!--                分页器-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="pageSizes"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        class="text-right"
+                >
+                </el-pagination>
+            </div>
+        </template>
+    </Cards>
+</div>

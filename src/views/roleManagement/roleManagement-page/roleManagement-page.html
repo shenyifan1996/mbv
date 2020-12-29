@@ -1,0 +1,121 @@
+<div class="roleManagement-page">
+    <Cards class="roleManagement">
+        <template v-slot:header>
+            <span>角色管理</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="roleManForm" class="roleManForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            角色代码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="roleManForm.value.code" />
+                        </Value>
+                    </Cell>
+                    <Cell>
+                        <Label>
+                            角色名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="roleManForm.value.name" />
+                        </Value>
+                    </Cell>
+                    <Cell> </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            状态
+                        </Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="roleManForm.value.status" clearable>
+                                <el-option :value="'All'" label="All"/>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                    <Cell> </Cell>
+                    <Cell> </Cell>
+                </Row>
+            </Form>
+            <Aside class="btn-left">
+                <el-button type="primary" size="mini">查询</el-button>
+                <el-button type="primary" size="mini" @click="$router.push('roleManagementAdd')">新增</el-button>
+            </Aside>
+        </template>
+    </Cards>
+    <Cards class="roleManagement-list">
+        <template v-slot:header>
+            <span>信息列表</span>
+        </template>
+        <template v-slot:content>
+            <div class="roleManList">
+                <!--                表格-->
+                <el-table
+                        stripe border
+                        ref="channelTable"
+                        :header-cell-style="{background:'#85a0cd'}"
+                        :data="roleManData"
+                        style="width: 100%"
+                >
+                    <el-table-column
+                            label="角色代码"
+                            width="120"
+                    >
+                        <template slot-scope="scope">
+                            <router-link :to="{path:'roleManagementEdit',query: {info: scope.row}}">
+                                <span>{{scope.row.roleManCode}}</span>
+                            </router-link>
+                        </template>
+                    </el-table-column>
+                    <el-table-column
+                            label="角色名称"
+                            prop="roleManName"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="系统名称"
+                            prop="systemName"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="品牌"
+                            prop="brand"
+                            width="100"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="status"
+                            label="状态"
+                            width="100"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            label="操作"
+                            width="200"
+                    >
+                        <template slot-scope="scope">
+                            <el-button type="text" size="small" @click="menuAuthorization(scope.row)">菜单授权</el-button>
+                            <el-button type="text" size="small" @click="roleAuthorization(scope.row)">角色授权</el-button>
+                        </template>
+                    </el-table-column>
+                </el-table>
+                <!--                分页器-->
+                <el-pagination
+                        @size-change="handleSizeChange"
+                        @current-change="handleCurrentChange"
+                        :current-page="currentPage"
+                        :page-sizes="pageSizes"
+                        :page-size="pageSize"
+                        layout="total, sizes, prev, pager, next, jumper"
+                        :total="total"
+                        class="text-right"
+                >
+                </el-pagination>
+            </div>
+        </template>
+    </Cards>
+</div>

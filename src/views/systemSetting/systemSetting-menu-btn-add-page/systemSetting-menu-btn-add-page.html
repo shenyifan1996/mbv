@@ -2,9 +2,59 @@
     <Cards class="systemSetting-menu-btn-add">
         <template v-slot:header>
             <span>新增按钮信息</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
         </template>
         <template v-slot:content>
-
+            <Form :form="menuBtnAddForm" class="menuBtnAddForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            按钮编码
+                        </Label>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="menuBtnAddForm.value.code" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            按钮名称
+                        </Label>
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="menuBtnAddForm.value.name" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            状态
+                        </Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="menuBtnAddForm.value.status" clearable>
+                                <el-option :value="'双品牌'" label="双品牌"/>
+                                <el-option :value="'xxx'" label="xxx"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            按钮描述
+                        </Label>
+                        <Value v-form-controller="'desc'">
+                            <el-input type="textarea" v-model="menuBtnAddForm.value.desc"></el-input>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="text-center">
+                <el-button type="primary" size="mini">确定</el-button>
+                <el-button type="primary" size="mini" @click="$router.back()">取消</el-button>
+            </Aside>
         </template>
     </Cards>
 </div>

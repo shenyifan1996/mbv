@@ -21,7 +21,7 @@ export default class ChannelRegistrationEditPage extends Vue{
     {id:"status",validator:[]},
   ])
   created(){
-    this.channelEditForm.value.code = this.$route.query.id
+    console.log(this.$route.query.id)
   }
   //methods
   submit(){

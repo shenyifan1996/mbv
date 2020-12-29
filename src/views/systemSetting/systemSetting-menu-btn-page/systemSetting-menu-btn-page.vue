@@ -43,7 +43,7 @@ export default class systemSettingMenuBtnPage extends Vue{
     this.$router.push({
       path:'systemSettingMenuBtnEdit',
       query:{
-        id:row.code
+        id:row.btnCode
       },
     })
   }

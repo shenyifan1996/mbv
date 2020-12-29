@@ -16,11 +16,13 @@ export const navData: NavListItem[] = [
                    //注销
                    { label: "频道注册", path: "ChannelRegistration" },
                    { label: "系统配置", path: "systemSetting" },
+                   { label: "角色管理", path: "roleManagement" },
                ]
            }, {
                 label: "频道系统维护", children: [
                     { label: "频道注册", path: "ChannelRegistration" },
                     { label: "系统配置", path: "systemSetting" },
+                    { label: "角色管理", path: "roleManagement" },
                 ]
             }
 

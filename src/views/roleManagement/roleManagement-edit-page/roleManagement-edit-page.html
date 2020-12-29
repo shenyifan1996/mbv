@@ -1,0 +1,64 @@
+<div class="roleManagement-edit-page">
+    <Cards class="roleManagement-edit">
+        <template v-slot:header>
+            <span>角色维护修改</span>
+        </template>
+        <template v-slot:content>
+            <Form :form="roleManEditForm" class="roleManEditForm">
+                <Row>
+                    <Cell>
+                        <Label>
+                            系统名称
+                        </Label>
+                        <Value v-form-controller="'systemName'">
+                            <el-input v-model="roleManEditForm.value.systemName"  :disabled="true"/>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            角色名称
+                        </Label>
+                        <Value v-form-controller="'roleName'">
+                            <el-input v-model="roleManEditForm.value.roleName" />
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            所属品牌
+                        </Label>
+                        <Value v-form-controller="'brand'">
+                            <el-radio-group v-model="roleManEditForm.value.brand">
+                                <el-radio :label="'双品牌'">双品牌</el-radio>
+                                <el-radio :label="'大众'">大众</el-radio>
+                                <el-radio :label="'斯柯达'">斯柯达</el-radio>
+                                <el-radio :label="'奥迪'">奥迪</el-radio>
+                            </el-radio-group>
+                        </Value>
+                    </Cell>
+                </Row>
+                <Row>
+                    <Cell>
+                        <Label>
+                            状态
+                        </Label>
+                        <Value v-form-controller="'status'">
+                            <el-select v-model="roleManEditForm.value.status" clearable>
+                                <el-option :value="'All'" label="All"/>
+                                <el-option :value="'有效'" label="有效"/>
+                                <el-option :value="'yyy'" label="yyy"/>
+                            </el-select>
+                        </Value>
+                    </Cell>
+                </Row>
+            </Form>
+            <Aside class="text-center">
+                <el-button type="primary" size="mini">保存</el-button>
+                <el-button type="primary" size="mini" @click="$router.back()">取消</el-button>
+            </Aside>
+        </template>
+    </Cards>
+</div>

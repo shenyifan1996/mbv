@@ -1,0 +1,10 @@
+.roleManagement-role-page{
+  .roleManagement-role{
+    .btn-left{
+      margin-left: 100px;
+    }
+  }
+  ::v-deep.el-table th>.cell{
+    color: #FFFFFF;
+  }
+}

@@ -1,0 +1,21 @@
+.roleManagement-menu-page{
+  .roleManagement-menu{
+    .roleManMenuForm{
+      .yo-row + .yo-row{
+        margin-top: 0;
+      }
+        .el-input.is-disabled ::v-deep .el-input__inner{
+          background-color: transparent;
+          border:0;
+          cursor:default;
+        }
+      }
+    .roleManMenuTree{
+      margin-top: 20px;
+      margin-left: 70px;
+    }
+    .btn-left{
+      margin-left: 70px;
+    }
+  }
+}

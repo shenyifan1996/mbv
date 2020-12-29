@@ -1,0 +1,58 @@
+<div class="roleManagement-menu-page">
+    <Cards class="roleManagement-menu">
+        <template v-slot:header>
+            <span>角色菜单</span>
+        </template>
+        <template v-slot:content>
+            <div class="roleManagement-menu-content">
+<!--                表单-->
+                <Form :form="roleManMenuForm" class="roleManMenuForm">
+                    <Row>
+                        <Cell>
+                            <Label>
+                                角色代码
+                            </Label>
+                            <Value v-form-controller="'roleCode'">
+                                <el-input v-model="roleManMenuForm.value.roleCode" :disabled="true"/>
+                            </Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>
+                                角色名称
+                            </Label>
+                            <Value v-form-controller="'roleName'">
+                                <el-input v-model="roleManMenuForm.value.roleName" :disabled="true"/>
+                            </Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>
+                                频道名称
+                            </Label>
+                            <Value v-form-controller="'channelName'">
+                                <el-input v-model="roleManMenuForm.value.channelName" :disabled="true"/>
+                            </Value>
+                        </Cell>
+                    </Row>
+                </Form>
+<!--                树形图-->
+                <el-tree
+                        class="roleManMenuTree"
+                        ref="roleManMenuTree"
+                        :data="data"
+                        :props="defaultProps"
+                        show-checkbox
+                        @check="handleCheckChange"
+                ></el-tree>
+<!--                底部按钮-->
+                <Aside class="btn-left">
+                    <el-button type="primary" size="mini">保存</el-button>
+                    <el-button type="primary" size="mini" @click="$router.back()">取消</el-button>
+                </Aside>
+            </div>
+        </template>
+    </Cards>
+</div>

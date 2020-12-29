@@ -61,6 +61,20 @@ const routes: IceRouterConfig[] = [
     },{
         path: "systemSettingMenuBtnEdit", component: () => import("../views/systemSetting/systemSetting-menu-btn-edit-page/systemSetting-menu-btn-edit-page.vue"), pageName: "编辑按钮"
     },
+    // roleManagement角色管理
+    {
+        path: "roleManagement", component: () => import("../views/roleManagement/roleManagement-page/roleManagement-page.vue"), pageName: "角色管理"
+    },{
+        path: "roleManagementAdd", component: () => import("../views/roleManagement/roleManagement-add-page/roleManagement-add-page.vue"), pageName: "角色管理新增"
+    },{
+        path: "roleManagementEdit", component: () => import("../views/roleManagement/roleManagement-edit-page/roleManagement-edit-page.vue"), pageName: "角色管理修改"
+    },{
+        path: "roleManagementMenu", component: () => import("../views/roleManagement/roleManagement-menu-page/roleManagement-menu-page.vue"), pageName: "菜单授权"
+    },{
+        path: "roleManagementRole", component: () => import("../views/roleManagement/roleManagement-role-page/roleManagement-role-page.vue"), pageName: "角色授权"
+    },{
+        path: "roleManagementRoleAdd", component: () => import("../views/roleManagement/roleManagement-role-add-page/roleManagement-role-add-page.vue"), pageName: "角色授权新增"
+    },
 
 ];
 
