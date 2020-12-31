@@ -1,0 +1,49 @@
+<div class="postMenu-authorization-page">
+    <Cards class="postMenu-authorization">
+        <template v-slot:header>
+            <span>岗位菜单</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
+        </template>
+        <template v-slot:content>
+            <div class="postMenu-authorization-content">
+                <!--                表单-->
+                <Form :form="postMenuAuthForm" class="postMenuAuthForm">
+                    <Row>
+                        <Cell>
+                            <Label>
+                                岗位代码
+                            </Label>
+                            <Value v-form-controller="'postCode'">
+                                <el-input v-model="postMenuAuthForm.value.postCode" :disabled="true"/>
+                            </Value>
+                        </Cell>
+                    </Row>
+                    <Row>
+                        <Cell>
+                            <Label>
+                                岗位名称
+                            </Label>
+                            <Value v-form-controller="'postName'">
+                                <el-input v-model="postMenuAuthForm.value.postName" :disabled="true"/>
+                            </Value>
+                        </Cell>
+                    </Row>
+                </Form>
+                <!--                树形图-->
+                <el-tree
+                        class="postMenuAuthTree"
+                        ref="postMenuAuthTree"
+                        :data="data"
+                        :props="defaultProps"
+                        show-checkbox
+                        @check="handleCheckChange"
+                ></el-tree>
+                <!--                底部按钮-->
+                <Aside class="btn-left">
+                    <el-button type="primary" size="small">保存</el-button>
+                    <el-button type="primary" size="small" @click="$router.back()">取消</el-button>
+                </Aside>
+            </div>
+        </template>
+    </Cards>
+</div>

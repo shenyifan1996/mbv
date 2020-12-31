@@ -1,0 +1,13 @@
+.menuSearch-page{
+  .menuSearch{
+    margin-bottom: 20px;
+    .left-button{
+      margin-left: 110px;
+    }
+  }
+  .menuSearch-list{
+    ::v-deep.el-table th>.cell{
+      color: #FFFFFF;
+    }
+  }
+}

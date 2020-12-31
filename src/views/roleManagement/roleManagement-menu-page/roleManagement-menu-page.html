@@ -2,6 +2,7 @@
     <Cards class="roleManagement-menu">
         <template v-slot:header>
             <span>角色菜单</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
         </template>
         <template v-slot:content>
             <div class="roleManagement-menu-content">
@@ -49,8 +50,8 @@
                 ></el-tree>
 <!--                底部按钮-->
                 <Aside class="btn-left">
-                    <el-button type="primary" size="mini">保存</el-button>
-                    <el-button type="primary" size="mini" @click="$router.back()">取消</el-button>
+                    <el-button type="primary" size="small">保存</el-button>
+                    <el-button type="primary" size="small" @click="$router.back()">取消</el-button>
                 </Aside>
             </div>
         </template>

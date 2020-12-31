@@ -228,16 +228,16 @@
                     </el-table-column>
                     <template slot="append">
                         <div style="margin: 10px">
-                            <el-button type="primary" @click="openEmployeeTree">指定岗位</el-button>
-                            <el-button type="primary">移除岗位</el-button>
+                            <el-button type="primary" size="small" @click="openEmployeeTree">指定岗位</el-button>
+                            <el-button type="primary" size="small">移除岗位</el-button>
                         </div>
                     </template>
                 </el-table>
             </div>
 <!--            底部两个按钮-->
             <Aside class="text-center">
-                <el-button type="primary" size="medium" @click="submit">确定</el-button>
-                <el-button type="primary" size="medium" @click="$router.back()">取消</el-button>
+                <el-button type="primary" size="small" @click="submit">确定</el-button>
+                <el-button type="primary" size="small" @click="$router.back()">取消</el-button>
             </Aside>
         </template >
     </Cards>
@@ -254,6 +254,7 @@
     <el-button @click="cancelChooseOrg" size="medium">取 消</el-button>
   </span>
     </el-dialog>
+
 
 <!--    指定岗位弹出框-->
     <el-dialog

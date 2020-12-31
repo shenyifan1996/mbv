@@ -75,7 +75,18 @@ const routes: IceRouterConfig[] = [
     },{
         path: "roleManagementRoleAdd", component: () => import("../views/roleManagement/roleManagement-role-add-page/roleManagement-role-add-page.vue"), pageName: "角色授权新增"
     },
-
+//    postMenu岗位菜单维护
+    {
+        path: "postMenu", component: () => import("../views/postMenu/postMenu-page/postMenu-page.vue"), pageName: "岗位菜单维护"
+    },{
+        path: "postMenuAuth", component: () => import("../views/postMenu/postMenu-authorization-page/postMenu-authorization-page.vue"), pageName: "岗位菜单授权"
+    },
+//    menuSearch菜单权限查询
+    {
+        path: "menuSearch", component: () => import("../views/menuSearch/menuSearch-page/menuSearch-page.vue"), pageName: "菜单权限查询"
+    },{
+        path: "menuSearchDetail", component: () => import("../views/menuSearch/menuSearch-detail-page/menuSearch-detail-page.vue"), pageName: "菜单权限查询"
+    },
 ];
 
 export default routes;

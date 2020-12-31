@@ -1,0 +1,13 @@
+.postMenu-page{
+  .postMenu{
+    margin-bottom: 20px;
+    .btn-left{
+      margin-left: 100px;
+    }
+  }
+  .postMenu-info{
+    ::v-deep.el-table th>.cell{
+      color: #FFFFFF;
+    }
+  }
+}

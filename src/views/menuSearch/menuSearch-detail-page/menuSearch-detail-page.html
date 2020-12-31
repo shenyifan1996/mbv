@@ -1,0 +1,43 @@
+<div class="menuSearch-detail-page">
+    <div class="menuSearch-detail-left">
+        <Cards class="menuSearch-detail-tree">
+            <template v-slot:header>
+                <span>系统菜单树</span>
+            </template>
+            <template v-slot:content>
+                <el-tree :data="data"
+                         :props="defaultProps"
+                         @node-click="handleNodeClick"
+                         :highlight-current= true
+                >
+                </el-tree>
+            </template>
+        </Cards>
+    </div>
+    <div class="menuSearch-detail-right">
+        <Cards class="menuSearch-detail-postList">
+            <template v-slot:header>
+                <span>岗位列表</span>
+            </template>
+            <template v-slot:content>
+
+            </template>
+        </Cards>
+        <Cards class="menuSearch-detail-roleList">
+            <template v-slot:header>
+                <span>角色列表</span>
+            </template>
+            <template v-slot:content>
+
+            </template>
+        </Cards>
+        <Cards class="menuSearch-detail-userList">
+            <template v-slot:header>
+                <span>用户列表</span>
+            </template>
+            <template v-slot:content>
+
+            </template>
+        </Cards>
+    </div>
+</div>

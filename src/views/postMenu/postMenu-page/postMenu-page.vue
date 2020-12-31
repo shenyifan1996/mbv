@@ -1,5 +1,5 @@
 
-<template src="./roleManagement-role-add-page.html">
+<template src="./postMenu-page.html">
 </template>
 
 <script lang="ts">
@@ -8,29 +8,36 @@ import Component from "vue-class-component";
 import {Form} from "@ztwx/form";
 
 @Component({})
-export default class extends Vue{
-//选择用户信息表单
-  roleManRoleAddForm:Form=new Form([
-    {id:"personNumber",validator:[]},
-    {id:"personName",validator:[]},
+export default class postMenuPage extends Vue{
+  //岗位菜单授权管理表单
+  postMenuForm:Form=new Form([
+    {id:"code",validator:[]},
+    {id:"name",validator:[]},
   ])
-  //选择用户信息表格
-  roleManRoleAddData:any=[
+  //信息列表表格
+  postMenuData:any=[
     {
       number:'12312',
-      name:'经销商全生命周期',
+      name:'RBO总经理',
+      brand:'斯柯达',
     }
   ]
   /* 分页部分 */
   currentPage:number= 1;
   pageSize:number = 5;
   pageSizes:any = [5, 10, 20, 30]
-  total:number=this.roleManRoleAddData.length;
-  roleManagementSelection:any=[]
+  total:number=this.postMenuData.length;
+
   //methods
   //点击选定人员
-  personSelected(row:any){
+  menuPower(row:any){
     console.log(row)
+    this.$router.push({
+      path:'postMenuAuth',
+      query:{
+        info:row
+      }
+    })
   }
   //当前页码改变
   handleSizeChange(val:any) {
@@ -42,9 +49,8 @@ export default class extends Vue{
     // console.log(`当前页: ${val}`);
     this.currentPage=val
   }
-
 }
 </script>
 
-<style scoped src="./roleManagement-role-add-page.scss" lang="scss">
+<style scoped src="./postMenu-page.scss" lang="scss">
 </style>

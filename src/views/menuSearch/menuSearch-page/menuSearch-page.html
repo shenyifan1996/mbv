@@ -1,28 +1,21 @@
-<div class="roleManagement-page">
-    <Cards class="roleManagement">
+<div class="menuSearch-page">
+    <Cards class="menuSearch">
         <template v-slot:header>
-            <span>角色管理</span>
+            <span>系统菜单权限查看</span>
         </template>
         <template v-slot:content>
-            <Form :form="roleManForm" class="roleManForm">
+            <Form :form="menuSearchForm">
                 <Row>
                     <Cell>
                         <Label>
-                            角色代码
-                        </Label>
-                        <Value v-form-controller="'code'">
-                            <el-input v-model="roleManForm.value.code" />
-                        </Value>
-                    </Cell>
-                    <Cell>
-                        <Label>
-                            角色名称
+                            系统名称
                         </Label>
                         <Value v-form-controller="'name'">
-                            <el-input v-model="roleManForm.value.name" />
+                            <el-input v-model="menuSearchForm.value.name" />
                         </Value>
                     </Cell>
-                    <Cell> </Cell>
+                    <Cell></Cell>
+                    <Cell></Cell>
                 </Row>
                 <Row>
                     <Cell>
@@ -30,76 +23,65 @@
                             状态
                         </Label>
                         <Value v-form-controller="'status'">
-                            <el-select v-model="roleManForm.value.status" clearable>
+                            <el-select v-model="menuSearchForm.value.status" clearable>
                                 <el-option :value="'All'" label="All"/>
                                 <el-option :value="'有效'" label="有效"/>
-                                <el-option :value="'yyy'" label="yyy"/>
+                                <el-option :value="'无效'" label="无效"/>
                             </el-select>
                         </Value>
                     </Cell>
-                    <Cell> </Cell>
-                    <Cell> </Cell>
+                    <Cell></Cell>
+                    <Cell></Cell>
                 </Row>
             </Form>
-            <Aside class="btn-left">
+            <Aside class="left-button">
                 <el-button type="primary" size="small">查询</el-button>
-                <el-button type="primary" size="small" @click="$router.push('roleManagementAdd')">新增</el-button>
             </Aside>
         </template>
     </Cards>
-    <Cards class="roleManagement-list">
+    <Cards class="menuSearch-list">
         <template v-slot:header>
-            <span>信息列表</span>
+            <span>系统列表</span>
         </template>
         <template v-slot:content>
-            <div class="roleManList">
+            <div class="menuSearchList">
                 <!--                表格-->
                 <el-table
                         stripe border
-                        ref="channelTable"
+                        ref="menuSearchTable"
                         :header-cell-style="{background:'#85a0cd'}"
-                        :data="roleManData"
+                        :data="menuSearchData"
                         style="width: 100%"
                 >
                     <el-table-column
-                            label="角色代码"
+                            label="系统编码"
+                            prop="systemCode"
                             width="120"
                     >
-                        <template slot-scope="scope">
-                            <router-link :to="{path:'roleManagementEdit',query: {info: scope.row}}">
-                                <span>{{scope.row.roleManCode}}</span>
-                            </router-link>
-                        </template>
                     </el-table-column>
                     <el-table-column
-                            label="角色名称"
-                            prop="roleManName"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            label="系统名称"
-                            prop="systemName"
-                    >
-                    </el-table-column>
-                    <el-table-column
-                            label="品牌"
-                            prop="brand"
-                            width="100"
+                            label="频道名称"
+                            prop="channelName"
                     >
                     </el-table-column>
                     <el-table-column
                             prop="status"
                             label="状态"
-                            width="100"
+                            width="120"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="brand"
+                            label="所属品牌"
+                            width="150"
                     >
                     </el-table-column>
                     <el-table-column
                             label="操作"
-                            width="200"
+                            width="100"
                     >
                         <template slot-scope="scope">
-                            <el-button type="text" size="small" @click="menuAuthorization(scope.row)">菜单授权</el-button>
-                            <el-button type="text" size="small" @click="roleAuthorization(scope.row)">角色授权</el-button>
+                            <el-button type="text" size="small" @click="menuSetting(scope.row)">查看</el-button>
                         </template>
                     </el-table-column>
                 </el-table>

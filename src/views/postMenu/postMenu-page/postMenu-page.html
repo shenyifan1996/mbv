@@ -1,55 +1,63 @@
-<div class="roleManagement-role-add-page">
-    <Cards class="roleManagement-role-add">
+<div class="postMenu-page">
+    <Cards class="postMenu">
         <template v-slot:header>
-            <span>选择用户信息</span>
-            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
+            <span>岗位菜单授权管理</span>
         </template>
         <template v-slot:content>
-            <!--                表单-->
-            <Form :form="roleManRoleAddForm" class="roleManRoleAddForm">
+            <Form :form="postMenuForm" class="postMenuForm">
                 <Row>
                     <Cell>
                         <Label>
-                            员工工号
+                            岗位代码
                         </Label>
-                        <Value v-form-controller="'personNumber'">
-                            <el-input v-model="roleManRoleAddForm.value.personNumber"/>
+                        <Value v-form-controller="'code'">
+                            <el-input v-model="postMenuForm.value.code" />
                         </Value>
                     </Cell>
                     <Cell>
                         <Label>
-                            员工姓名
+                            岗位名称
                         </Label>
-                        <Value v-form-controller="'personName'">
-                            <el-input v-model="roleManRoleAddForm.value.personName" />
+                        <Value v-form-controller="'name'">
+                            <el-input v-model="postMenuForm.value.name" />
                         </Value>
                     </Cell>
-                    <Cell></Cell>
+                    <Cell> </Cell>
                 </Row>
             </Form>
             <Aside class="btn-left">
                 <el-button type="primary" size="small">查询</el-button>
-                <el-button type="primary" size="small" @click="$router.back()">返回</el-button>
             </Aside>
+        </template>
+    </Cards>
+    <Cards class="postMenu-info">
+        <template v-slot:header>
+            <span>信息列表</span>
+        </template>
+        <template v-slot:content>
             <!-- 列表页面 -->
-            <div class="roleManagementRoleList">
+            <div class="postMenuList">
                 <!--                表格-->
                 <el-table
                         stripe border
-                        ref="roleManagementRoleTable"
+                        ref="postMenuTable"
                         :header-cell-style="{background:'#85a0cd'}"
-                        :data="roleManRoleAddData"
+                        :data="postMenuData"
                         style="width: 100%"
                 >
                     <el-table-column
                             prop="number"
-                            label="编号"
-                            width="240"
+                            label="岗位代码"
                     >
                     </el-table-column>
                     <el-table-column
                             prop="name"
-                            label="姓名"
+                            label="岗位名称"
+                    >
+                    </el-table-column>
+                    <el-table-column
+                            prop="brand"
+                            label="品牌"
                     >
                     </el-table-column>
                     <el-table-column
@@ -57,7 +65,7 @@
                             width="200"
                     >
                         <template slot-scope="scope">
-                            <el-button type="text" size="small" @click="personSelected(scope.row)">选定</el-button>
+                            <el-button type="text" size="small" @click="menuPower(scope.row)">菜单授权</el-button>
                         </template>
                     </el-table-column>
                 </el-table>

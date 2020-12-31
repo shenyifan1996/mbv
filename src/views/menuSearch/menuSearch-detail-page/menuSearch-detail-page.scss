@@ -1,0 +1,17 @@
+.menuSearch-detail-page{
+  display: flex;
+  align-items:flex-start;
+  .menuSearch-detail-left{
+    width: 25%;
+    .menuSearch-detail-tree{
+      min-height:500px ;
+      ::v-deep .el-tree-node.is-current>.el-tree-node__content{
+        background-color: #fff;
+        color: red;
+      }
+    }
+  }
+  .menuSearch-detail-right{
+    flex: 1;
+  }
+}

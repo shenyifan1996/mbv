@@ -71,7 +71,7 @@ export default class employeeEditPage extends Vue{
   orgName:string=''
 
   created(){
-    this.editEmpForm.value.employeeNumber = this.$route.query.id
+    console.log(this.$route.query.id)
   }
   //岗位信息表格数据
   EditEmpInfoData:any = []

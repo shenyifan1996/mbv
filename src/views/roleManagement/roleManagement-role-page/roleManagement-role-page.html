@@ -2,6 +2,7 @@
     <Cards class="roleManagement-role">
         <template v-slot:header>
             <span>人员角色授权界面</span>
+            <el-button style="float: right; padding: 3px 0" type="text" @click="$router.back()">关闭窗口</el-button>
         </template>
         <template v-slot:content>
             <!--                表单-->
@@ -27,8 +28,8 @@
                 </Row>
             </Form>
             <Aside class="btn-left">
-                <el-button type="primary" size="mini" @click="$router.push('roleManagementRoleAdd')">新增</el-button>
-                <el-button type="primary" size="mini">删除</el-button>
+                <el-button type="primary" size="small" @click="$router.push('roleManagementRoleAdd')">新增</el-button>
+                <el-button type="primary" size="small">删除</el-button>
             </Aside>
             <!-- 列表页面 -->
             <div class="roleManagementRoleList">

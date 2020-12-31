@@ -49,9 +49,7 @@ export default class positionEditPage extends Vue{
   }
   created(){
     console.log(this.$route.query.info)
-    this.editPositionForm.value =this.$route.query.info
   }
-
   //打开对话框
   openTree(){
     this.chooseOrg = true
@@ -71,8 +69,6 @@ export default class positionEditPage extends Vue{
     this.chooseOrg = false
     this.data1=[]
   }
-
-
 }
 </script>
 
