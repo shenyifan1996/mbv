@@ -55,9 +55,14 @@ export default class organizationPage extends Vue{
   }
   //methods
   //点击树状图节点做的事
-  handleNodeClick(data:any) {
+  handleNodeClick(data:any,node:any) {
+    //获取父节点，如果父节点为空则赋值没有上级部门
+    let fatherLabel = node.parent.label
+    if(!fatherLabel){
+      fatherLabel = '没有上级部门'
+    }
     this.orgForm.value.name = data.label
-    console.log(data);
+    this.orgForm.value.organization = fatherLabel
   }
 
   //确认修改做的事
